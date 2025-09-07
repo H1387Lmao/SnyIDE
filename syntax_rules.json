@@ -1,0 +1,30 @@
+{
+  "python": {
+    "keywords": {
+      "regexes": ["\\bFalse\\b", "\\bNone\\b", "\\bTrue\\b", "\\band\\b", "\\bas\\b", "\\bassert\\b", "\\basync\\b", "\\bawait\\b", "\\bbreak\\b", "\\bclass\\b", "\\bcontinue\\b", "\\bdef\\b", "\\bdel\\b", "\\belif\\b", "\\belse\\b", "\\bexcept\\b", "\\bfinally\\b", "\\bfor\\b", "\\bfrom\\b", "\\bglobal\\b", "\\bif\\b", "\\bimport\\b", "\\bin\\b", "\\bis\\b", "\\blambda\\b", "\\bnonlocal\\b", "\\bnot\\b", "\\bor\\b", "\\bpass\\b", "\\braise\\b", "\\breturn\\b", "\\btry\\b", "\\bwhile\\b", "\\bwith\\b", "\\byield\\b"],
+      "format": {"color": "#00008B", "bold": true}
+    },
+    "strings": {
+      "regexes": ["\".*?\"", "'.*?'"],
+      "format": {"color": "#008000"}
+    },
+    "comments": {
+      "regexes": ["#.*"],
+      "format": {"color": "#808080", "italic": true}
+    },
+    "autocomplete_regexes":{
+      "class": "class\\s+([A-Za-z_][A-Za-z0-9_]*):",
+      "def": "def\\s+([A-Za-z][A-Za-z_0-9]*)\\("
+    },
+    "f_call": {
+      "regexes": ["\\b([A-Za-z_][A-Za-z0-9_]*)\\b(?=\\()"],
+      "format": {"color": "#AB1616"}
+    },
+    "errors":{
+      "regexes": ["\\bArithmeticError\\b", "\\bAssertionError\\b", "\\bAttributeError\\b", "\\bBlockingIOError\\b", "\\bBrokenPipeError\\b", "\\bBufferError\\b", "\\bBytesWarning\\b", "\\bChildProcessError\\b", "\\bConnectionAbortedError\\b", "\\bConnectionError\\b", "\\bConnectionRefusedError\\b", "\\bConnectionResetError\\b", "\\bDeprecationWarning\\b", "\\bEOFError\\b", "\\bEncodingWarning\\b", "\\bEnvironmentError\\b", "\\bFileExistsError\\b", "\\bFileNotFoundError\\b", "\\bFloatingPointError\\b", "\\bFutureWarning\\b", "\\bIOError\\b", "\\bImportError\\b", "\\bImportWarning\\b", "\\bIndentationError\\b", "\\bIndexError\\b", "\\bInterruptedError\\b", "\\bIsADirectoryError\\b", "\\bKeyError\\b", "\\bLookupError\\b", "\\bMemoryError\\b", "\\bModuleNotFoundError\\b", "\\bNameError\\b", "\\bNotADirectoryError\\b", "\\bNotImplementedError\\b", "\\bOSError\\b", "\\bOverflowError\\b", "\\bPendingDeprecationWarning\\b", "\\bPermissionError\\b", "\\bProcessLookupError\\b", "\\bRecursionError\\b", "\\bReferenceError\\b", "\\bResourceWarning\\b", "\\bRuntimeError\\b", "\\bRuntimeWarning\\b", "\\bSyntaxError\\b", "\\bSyntaxWarning\\b", "\\bSystemError\\b", "\\bTabError\\b", "\\bTimeoutError\\b", "\\bTypeError\\b", "\\bUnboundLocalError\\b", "\\bUnicodeDecodeError\\b", "\\bUnicodeEncodeError\\b", "\\bUnicodeError\\b", "\\bUnicodeTranslateError\\b", "\\bUnicodeWarning\\b", "\\bUserWarning\\b", "\\bValueError\\b", "\\bWarning\\b", "\\bWindowsError\\b", "\\bZeroDivisionError\\b"],
+      "format": {"color": "#B80000", "bold": true}
+    },
+    "auto_keyword": ["False", "None", "True", "and", "as", "assert", "async", "await", "break", "class", "continue", "def", "del", "elif", "else", "except", "finally", "for", "from", "global", "if", "import", "in", "is", "lambda", "nonlocal", "not", "or", "pass", "raise", "return", "try", "while", "with", "yield", "ArithmeticError", "AssertionError", "AttributeError", "BaseException", "BaseExceptionGroup", "BlockingIOError", "BrokenPipeError", "BufferError", "BytesWarning", "ChildProcessError", "ConnectionAbortedError", "ConnectionError", "ConnectionRefusedError", "ConnectionResetError", "DeprecationWarning", "EOFError", "Ellipsis", "EncodingWarning", "EnvironmentError", "Exception", "ExceptionGroup", "False", "FileExistsError", "FileNotFoundError", "FloatingPointError", "FutureWarning", "GeneratorExit", "IOError", "ImportError", "ImportWarning", "IndentationError", "IndexError", "InterruptedError", "IsADirectoryError", "KeyError", "KeyboardInterrupt", "LookupError", "MemoryError", "ModuleNotFoundError", "NameError", "None", "NotADirectoryError", "NotImplemented", "NotImplementedError", "OSError", "OverflowError", "PendingDeprecationWarning", "PermissionError", "ProcessLookupError", "RecursionError", "ReferenceError", "ResourceWarning", "RuntimeError", "RuntimeWarning", "StopAsyncIteration", "StopIteration", "SyntaxError", "SyntaxWarning", "SystemError", "SystemExit", "TabError", "TimeoutError", "True", "TypeError", "UnboundLocalError", "UnicodeDecodeError", "UnicodeEncodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning", "UserWarning", "ValueError", "Warning", "WindowsError", "ZeroDivisionError", "__build_class__", "__debug__", "__doc__", "__import__", "__loader__", "__name__", "__package__", "__spec__", "abs", "aiter", "all", "anext", "any", "ascii", "bin", "bool", "breakpoint", "bytearray", "bytes", "callable", "chr", "classmethod", "compile", "complex", "copyright", "credits", "delattr", "dict", "dir", "divmod", "enumerate", "eval", "exec", "exit", "filter", "float", "format", "frozenset", "getattr", "globals", "hasattr", "hash", "help", "hex", "id", "input", "int", "isinstance", "issubclass", "iter", "len", "license", "list", "locals", "map", "max", "memoryview", "min", "next", "object", "oct", "open", "ord", "pow", "print", "property", "quit", "range", "repr", "reversed", "round", "set", "setattr", "slice", "sorted", "staticmethod", "str", "sum", "super", "tuple", "type", "vars", "zip"]
+  }
+}
+
