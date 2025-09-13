@@ -1,0 +1,14 @@
+{
+	"EditorBG": "#282a36",
+	"MainBG": "#2d303d",
+	"Foreground": "#a6afe1",
+	"LineFG": "#46465a",
+	"LineBG": "#282a36",
+	"colors": {
+		"KEYWORD": "#0000B8",
+		"COMMENT": "#151515",
+		"STRING": "#14CCD2",
+		"OBJECT_CALL": "#CA42BD",
+		"default": "#DDDDDD"
+	}
+}

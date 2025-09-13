@@ -10,11 +10,14 @@ import os
 import re
 
 class CodeEditor(QPlainTextEdit):
-	def __init__(self):
+	def __init__(self, c):
 		super().__init__()
 		self.setFont(QFont("Jetbrains Mono", 14))
 
-		self.Highlighter = Highlighter(self.document(), "python")
+		self.Highlighter = Highlighter(c, self.document(), "python")
+
+		with open(c) as f:
+			self.colors = json.load(f)
 		
 		self.class_regex = re.compile(self.Highlighter.auto_regex['class'])
 		self.defs = re.compile(self.Highlighter.auto_regex['def']) 
@@ -212,6 +215,7 @@ class CodeEditor(QPlainTextEdit):
 
 	def _init_line_number_area(self):
 		self.line_number_area = LineNumberArea(self)
+		self.line_number_area.setObjectName("numberline")
 		self.blockCountChanged.connect(self.update_line_number_area_width)
 		self.updateRequest.connect(self.update_line_number_area)
 		self.cursorPositionChanged.connect(self.line_number_area.update)
@@ -276,7 +280,7 @@ class CodeEditor(QPlainTextEdit):
 
 	def lineNumberAreaPaintEvent(self, event):
 		painter = QPainter(self.line_number_area)
-		painter.fillRect(event.rect(), QColor("#f0f0f0"))
+		painter.fillRect(event.rect(), QColor(self.colors['LineBG']))
 		block = self.firstVisibleBlock()
 		top = self.blockBoundingGeometry(block).translated(self.contentOffset()).top()
 		bottom = top + self.blockBoundingRect(block).height()
@@ -284,7 +288,7 @@ class CodeEditor(QPlainTextEdit):
 		while block.isValid() and top <= event.rect().bottom():
 			if block.isVisible() and bottom >= event.rect().top():
 				number = str(block.blockNumber() + 1)
-				painter.setPen(Qt.gray)
+				painter.setPen(QColor(self.colors['LineFG']))
 				painter.drawText(0, int(top), self.line_number_area.width() - 5,
 								 self.fontMetrics().height(), Qt.AlignRight, number)
 			block = block.next()
@@ -304,7 +308,7 @@ class LineNumberArea(QWidget):
 		self.editor.lineNumberAreaPaintEvent(event)
 		
 class Highlighter(QSyntaxHighlighter):
-	def __init__(self, document, language):
+	def __init__(self, c, document, language):
 		super().__init__(document)
 		self.language = language
 		self.rules = []
@@ -320,15 +324,16 @@ class Highlighter(QSyntaxHighlighter):
 		lang_config = config[language]
 		self.auto_regex = lang_config['autocomplete_regexes']
 		self.completions = set(lang_config['auto_keyword'])
+		with open(c) as f:
+			self.colors = json.load(f)['colors']
 
 		# For each scope (e.g. keywords, comments, strings), add rules
 		for scope, details in lang_config.items():
 			if isinstance(details, list): continue
 			format = QTextCharFormat()
 
-			color = details.get("format", {}).get("color")
-			if color:
-				format.setForeground(QColor(color))
+			color = self.colors.get(details.get("format", {}).get("color"), self.colors['default'])
+			format.setForeground(QColor(color))
 
 			if details.get("format", {}).get("bold"):
 				format.setFontWeight(QFont.Bold)
@@ -351,6 +356,7 @@ class Highlighter(QSyntaxHighlighter):
 				start = match.capturedStart()
 				length = match.capturedLength()
 				self.setFormat(start, length, fmt)
+				print(fmt)
 
 
 if __name__ == '__main__':

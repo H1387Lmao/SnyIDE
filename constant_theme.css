@@ -1,0 +1,31 @@
+QPlainTextEdit{
+	background-color: $EditorBG$;
+	color: $Foreground$;
+}
+
+QCompleter::popup{
+	background-color: $MainBG$;
+	color: $Foreground$;
+}
+
+QTreeView {
+	background-color: $MainBG$;
+	color: $Foreground$;
+}
+
+#numberline{
+	background-color: $EditorBG$;
+	color: $Foreground$;
+}
+
+QTreeView::branch {
+	color: $Foreground$;
+}
+
+QTreeView::branch {
+	color: $Foreground$;
+}
+
+QSplitter::handle{
+	background-color: $EditorBG$;
+}
