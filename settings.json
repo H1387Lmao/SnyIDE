@@ -1,0 +1,21 @@
+{
+  "shortcuts": {
+    "run_file": "Ctrl+Shift+F10",
+    "stop": "Ctrl+F2",
+    "debug": "Shift+F9",
+    "resume": "F9",
+    "toggle_console": "Ctrl+`",
+    "new_tab": "Ctrl+N",
+    "open_file": "Ctrl+O",
+    "open_folder": "Ctrl+Shift+O",
+    "close_tab": "Ctrl+W",
+    "terminal_clear": "Ctrl+L",
+    "settings": "Ctrl+Alt+S",
+    "exit": "Alt+F4"
+  },
+  "run_options": {
+    "*.py": "python $path",
+    "*.txt": "notepad $path",
+    "*.*": "notepad $path"
+  }
+}

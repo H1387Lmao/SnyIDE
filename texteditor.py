@@ -12,12 +12,14 @@ import re
 class CodeEditor(QPlainTextEdit):
 	def __init__(self, c):
 		super().__init__()
-		self.setFont(QFont("Jetbrains Mono", 14))
+		self.setFont(QFont("Cascadia Code", 14))
 
 		self.Highlighter = Highlighter(c, self.document(), "python")
 
 		with open(c) as f:
 			self.colors = json.load(f)
+		
+		self.file_path = None
 		
 		self.class_regex = re.compile(self.Highlighter.auto_regex['class'])
 		self.defs = re.compile(self.Highlighter.auto_regex['def']) 
@@ -27,6 +29,9 @@ class CodeEditor(QPlainTextEdit):
 		self.completer.setCaseSensitivity(Qt.CaseInsensitive)
 		self.completer.setWidget(self)
 		self.completer.activated.connect(self.insertCompletion)
+		# Style the popup via objectName for QSS
+		popup = self.completer.popup()
+		popup.setObjectName('completerPopup')
 
 		self.pairs = {'(': ')', '[': ']', '{': f'}}', '"': '"', "'": "'"} 
 
@@ -35,6 +40,11 @@ class CodeEditor(QPlainTextEdit):
 
 		# Connect textChanged signal to update completions dynamically
 		self.textChanged.connect(self.updateDynamicCompletions)
+
+	def load_from_file(self, path, encoding='utf-8'):
+		with open(path, 'r', encoding=encoding, errors='replace') as f:
+			self.setPlainText(f.read())
+		self.file_path = path
 
 	def updateDynamicCompletions(self):
 		# Get full document text
@@ -356,7 +366,6 @@ class Highlighter(QSyntaxHighlighter):
 				start = match.capturedStart()
 				length = match.capturedLength()
 				self.setFormat(start, length, fmt)
-				print(fmt)
 
 
 if __name__ == '__main__':

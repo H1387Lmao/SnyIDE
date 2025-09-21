@@ -1,31 +1,323 @@
-QPlainTextEdit{
-	background-color: $EditorBG$;
-	color: $Foreground$;
-}
-
-QCompleter::popup{
+/* Base */
+QWidget {
 	background-color: $MainBG$;
 	color: $Foreground$;
 }
 
+/* Editor */
+QPlainTextEdit {
+	background-color: $EditorBG$;
+	color: $Foreground$;
+	selection-background-color: $SelectionBG$;
+	selection-color: $SelectionFG$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+}
+/* Integrated console */
+QPlainTextEdit#console {
+	font-family: 'Cascadia Mono', 'JetBrains Mono', monospace;
+	font-size: 14px;
+	background-color: $EditorBG$;
+	color: $Foreground$;
+	margin: 5px;
+	border: 1px solid $Border$;
+}
+QPlainTextEdit#console:focus {
+	border: 1px solid $Muted$;
+}
+
+QTextEdit {
+	background-color: $EditorBG$;
+	color: $Foreground$;
+	selection-background-color: $SelectionBG$;
+	selection-color: $SelectionFG$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+}
+
+/* Autocomplete popup */
+QCompleter::popup {
+	background-color: $Surface$;
+	color: $Foreground$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+}
+#completerPopup {
+	background-color: $Surface$;
+	color: $Foreground$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+}
+#completerPopup::item { padding: 2px 8px; }
+#completerPopup::item:selected { background-color: $SelectionBG$; color: $SelectionFG$; }
+#completerPopup QScrollBar:vertical {
+	background: $Surface$;
+	width: 8px;
+}
+#completerPopup QScrollBar::handle:vertical {
+	background: $Border$;
+	min-height: 16px;
+	border-radius: 4px;
+}
+
+/* Project/File tree */
 QTreeView {
+	background-color: $Surface$;
+	color: $Foreground$;
+	border: none;
+	outline: none;
+	show-decoration-selected: 0;
+}
+
+QTreeView::item {
+	padding: 2px;
+}
+
+QTreeView::item:selected {
+	background-color: $Surface$;
+}
+
+QTreeView::item:hover {
+	background-color: $Surface$;
+}
+
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings {
+	border-image: none;
+	margin: 2px;
+	image: url(icons/caret-right.svg);
+}
+
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings {
+	border-image: none;
+	margin: 2px;
+	image: url(icons/caret-down.svg);
+}
+
+/* Gutter/number line */
+#numberline {
+	background-color: $EditorBG$;
+	color: $Muted$;
+	border-right: 1px solid $Border$;
+}
+
+/* Inputs */
+QLineEdit {
+	background-color: $Surface$;
+	color: $Foreground$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+	padding: 4px 8px;
+}
+QLineEdit:focus {
+	border: 1px solid $Accent$;
+}
+
+/* Buttons */
+QPushButton {
+	background-color: $Surface$;
+	color: $Foreground$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+	padding: 4px 10px;
+}
+QPushButton:hover { background-color: $Surface2$; }
+QPushButton:pressed { border-color: $Accent$; }
+QPushButton:disabled { color: $Muted$; border-color: $Border$; }
+QPushButton:default { background-color: $Accent$; color: $SelectionFG$; border-color: $Accent$; }
+
+/* Tabs */
+QTabWidget::pane {
+	border: none;
 	background-color: $MainBG$;
+}
+QTabBar {
+	background-color: $Surface$;
+	border-bottom: 1px solid $Border$;
+}
+QTabBar::tab {
+	background: $Surface$;
+	color: $Foreground$;
+	padding: 4px 8px;
+	border: none;
+	min-width: 80px;
+}
+QTabBar::tab:selected {
+	background: $Surface2$;
+	border-bottom: 2px solid $Accent$;
 	color: $Foreground$;
 }
-
-#numberline{
-	background-color: $EditorBG$;
-	color: $Foreground$;
+QTabBar::tab:hover {
+	background: $Surface2$;
+}
+QTabBar::close-button {
+	image: url(icons/close_tab.svg);
+	subcontrol-position: right;
+	padding: 2px;
+}
+QTabBar::close-button:hover {
+	background-color: $Border$;
+	border-radius: $Radius$;
 }
 
+/* Menus */
+QMenuBar {
+	background-color: $Surface$;
+	color: $Foreground$;
+	border: none;
+	padding: 2px;
+}
+QMenuBar::item {
+	background-color: transparent;
+	padding: 4px 8px;
+	margin: 0px;
+}
+QMenuBar::item:selected,
+QMenuBar::item:pressed {
+	background-color: $Surface2$;
+}
+
+QMenu {
+	background-color: $Surface$;
+	color: $Foreground$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+	margin: 0px;
+}
+QMenu::item {
+	padding: 4px 20px;
+	margin: 0px;
+}
+QMenu::item:selected {
+	background-color: $Surface2$;
+	color: $SelectionFG$;
+}
+QMenu::separator {
+	height: 1px;
+	background: $Border$;
+	margin: 2px 0px;
+}
+
+/* Tooltips */
+QToolTip {
+	background-color: $Surface$;
+	color: $Foreground$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+	padding: 4px 8px;
+}
+
+/* Toolbars */
+QToolBar {
+	background-color: $Surface$;
+	border: none;
+	spacing: 2px;
+	padding: 2px;
+}
+
+/* Scrollbars */
+QScrollBar:vertical {
+	background: $Surface$;
+	width: 10px;
+	margin: 0;
+}
+QScrollBar::handle:vertical {
+	background: $Border$;
+	min-height: 20px;
+	border-radius: 5px;
+}
+QScrollBar:horizontal {
+	background: $Surface$;
+	height: 10px;
+	margin: 0;
+}
+QScrollBar::handle:horizontal {
+	background: $Border$;
+	min-width: 20px;
+	border-radius: 5px;
+}
+
+/* Splitter */
+QSplitter {
+	background-color: $MainBG$;
+}
+QSplitter::handle {
+	background-color: $Surface$;
+	width: 1px;
+	height: 1px;
+}
+QSplitter::handle:hover {
+	background-color: $Surface2$;
+}
+
+/* Status bar */
+QStatusBar {
+	background: $MainBG$;
+	color: $Muted$;
+	border-top: 1px solid $Border$;
+}
+
+/* Top status-like bar */
+#topBar {
+	background-color: $Surface$;
+	border-bottom: 1px solid $Border$;
+}
+#topBar QPushButton#topbarButton {
+	background-color: $Surface$;
+	border: 1px solid $Border$;
+	border-radius: $Radius$;
+	padding: 4px 6px;
+}
+#topBar QPushButton#topbarButton:hover {
+	background-color: $Surface2$;
+}
+
+/* ===== Icons ===== */
+/* TreeView branch (expand/collapse) */
+/* Reset all branch images to avoid duplication on indentation columns */
 QTreeView::branch {
-	color: $Foreground$;
+	background: transparent;
+	image: none;
+}
+/* Remove default tree lines and prevent arrow duplication */
+QTreeView::branch:has-siblings:!adjoins-item,
+QTreeView::branch:has-siblings:adjoins-item,
+QTreeView::branch:!has-children:!has-siblings:adjoins-item,
+QTreeView::branch:has-children:!has-siblings:adjoins-item {
+	border-image: none;
+	image: none;
+}
+/* Show indicators on all expandable items, including root/top-level variants */
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings,
+QTreeView::branch:closed:has-children:!has-siblings:adjoins-item,
+QTreeView::branch:closed:has-children:has-siblings:adjoins-item {
+	margin: 2px;
+	image: url(icons/caret-right.svg);
+}
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings,
+QTreeView::branch:open:has-children:!has-siblings:adjoins-item,
+QTreeView::branch:open:has-children:has-siblings:adjoins-item {
+	margin: 2px;
+	image: url(icons/caret-down.svg);
 }
 
-QTreeView::branch {
-	color: $Foreground$;
-}
+/* ComboBox dropdown */
+QComboBox { padding-right: 20px; }
+QComboBox::down-arrow { image: url(icons/caret-down.svg); }
 
-QSplitter::handle{
-	background-color: $EditorBG$;
-}
+/* Menu submenu arrow */
+QMenu::right-arrow { image: url(icons/caret-right.svg); }
+
+/* Tab close button */
+QTabBar::close-button { image: url(icons/close_tab.svg); }
+QTabBar::close-button:hover { image: url(icons/close_tab.svg); }
+
+/* ToolButton dropdown indicator */
+QToolButton::menu-indicator { image: url(icons/caret-down.svg); }
+
+/* Header sort indicators */
+QHeaderView::down-arrow { image: url(icons/caret-down.svg); }
+QHeaderView::up-arrow { image: url(icons/caret-right.svg); }
